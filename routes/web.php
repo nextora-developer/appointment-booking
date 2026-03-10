@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController as AdminAuthenticatedSessionController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\StaffController as AdminStaffController;
+use App\Http\Controllers\Admin\AppointmentController as AdminAppointmentController;
+
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -14,6 +20,11 @@ Route::view('/contact', 'contact')->name('contact');
 
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
+
+Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AdminAuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('/login', [AdminAuthenticatedSessionController::class, 'store'])->name('login.store');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
@@ -30,4 +41,23 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::post('/logout', [AdminAuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+        Route::resource('services', AdminServiceController::class);
+        Route::resource('staff', AdminStaffController::class);
+
+        Route::resource('appointments', AdminAppointmentController::class)->only([
+            'index',
+            'show',
+            'edit',
+            'update'
+        ]);
+    });
+
+require __DIR__ . '/auth.php';

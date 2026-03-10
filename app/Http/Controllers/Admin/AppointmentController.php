@@ -3,63 +3,57 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $appointments = Appointment::with(['customer', 'service', 'staff.user'])
+            ->latest()
+            ->paginate(10);
+
+        return view('admin.appointments.index', compact('appointments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function show(Appointment $appointment)
     {
-        //
+        $appointment->load(['customer', 'service', 'staff.user']);
+
+        return view('admin.appointments.show', compact('appointment'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function edit(Appointment $appointment)
     {
-        //
+        $appointment->load(['customer', 'service', 'staff.user']);
+
+        $staffMembers = Staff::with('user')
+            ->where('is_active', true)
+            ->get();
+
+        $statuses = ['pending', 'confirmed', 'completed', 'cancelled'];
+
+        return view('admin.appointments.edit', compact('appointment', 'staffMembers', 'statuses'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(Request $request, Appointment $appointment)
     {
-        //
-    }
+        $validated = $request->validate([
+            'staff_id' => ['nullable', 'exists:staff,id'],
+            'status' => ['required', 'in:pending,confirmed,completed,cancelled'],
+            'notes' => ['nullable', 'string'],
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        $appointment->update([
+            'staff_id' => $validated['staff_id'] ?? null,
+            'status' => $validated['status'],
+            'notes' => $validated['notes'] ?? null,
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()
+            ->route('admin.appointments.index')
+            ->with('success', 'Appointment updated successfully.');
     }
 }
