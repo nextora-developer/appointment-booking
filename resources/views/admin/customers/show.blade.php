@@ -5,9 +5,9 @@
 @section('page_description', 'View customer profile and booking history')
 
 @section('content')
-    <div class="max-w-5xl mx-auto space-y-6">
+    <div class="max-w-5xl mx-auto space-y-4 sm:space-y-6">
 
-        <div class="mb-2">
+        <div class="mb-1 sm:mb-2">
             <a href="{{ route('admin.customers.index') }}"
                 class="inline-flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-indigo-600 transition-colors">
                 <i data-lucide="arrow-left" class="w-4 h-4"></i>
@@ -15,61 +15,72 @@
             </a>
         </div>
 
-        <div class="rounded-[2rem] border border-slate-200 bg-white shadow-sm overflow-hidden">
-            <div class="p-8 border-b border-slate-100">
+        <div class="rounded-[1.75rem] sm:rounded-[2rem] border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <div class="p-5 sm:p-8 border-b border-slate-100">
                 <div class="flex items-center gap-4">
                     <div
-                        class="h-14 w-14 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white text-lg font-bold shadow-inner">
+                        class="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white text-base sm:text-lg font-bold shadow-inner shrink-0">
                         {{ strtoupper(substr($customer->name ?? '?', 0, 1)) }}
                     </div>
 
-                    <div>
-                        <h3 class="text-xl font-black text-slate-900">{{ $customer->name }}</h3>
-                        <p class="text-sm text-slate-500 font-medium">{{ $customer->email ?? '-' }}</p>
+                    <div class="min-w-0">
+                        <h3 class="text-lg sm:text-xl font-black text-slate-900 truncate">{{ $customer->name }}</h3>
+                        <p class="text-sm text-slate-500 font-medium break-all">{{ $customer->email ?? '-' }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-5">
+            <div class="p-5 sm:p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-4 sm:p-5">
                     <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Phone</div>
-                    <div class="mt-2 text-sm font-bold text-slate-900">{{ $customer->phone ?? '-' }}</div>
+                    <div class="mt-2 text-sm font-bold text-slate-900 break-all">{{ $customer->phone ?? '-' }}</div>
                 </div>
 
-                <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-5">
+                <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-4 sm:p-5">
                     <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Total Bookings</div>
                     <div class="mt-2 text-sm font-bold text-slate-900">{{ $customer->appointments()->count() }}</div>
                 </div>
 
-                <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-5">
+                <div class="rounded-2xl border border-slate-100 bg-slate-50/70 p-4 sm:p-5 sm:col-span-2 md:col-span-1">
                     <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Customer ID</div>
                     <div class="mt-2 text-sm font-bold text-slate-900">#{{ $customer->id }}</div>
                 </div>
             </div>
         </div>
 
-        <div class="rounded-[2rem] border border-slate-200 bg-white shadow-sm overflow-hidden">
-            <div class="px-8 py-6 border-b border-slate-100">
+        <div class="rounded-[1.75rem] sm:rounded-[2rem] border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <div class="px-5 sm:px-8 py-5 sm:py-6 border-b border-slate-100">
                 <h4 class="text-sm font-black text-slate-900">Booking History</h4>
                 <p class="text-xs text-slate-500 mt-1">All appointments created by this customer</p>
             </div>
 
-            <div class="overflow-x-auto">
+            {{-- Desktop Table --}}
+            <div class="hidden lg:block overflow-x-auto">
                 <table class="w-full text-sm text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-50/50 border-b border-slate-100">
-                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">Reference</th>
-                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">Service</th>
-                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">Staff</th>
-                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">Schedule</th>
-                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">Status</th>
+                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                                Reference
+                            </th>
+                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                                Service
+                            </th>
+                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                                Staff
+                            </th>
+                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                                Schedule
+                            </th>
+                            <th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                                Status
+                            </th>
                         </tr>
                     </thead>
 
                     <tbody class="divide-y divide-slate-100">
                         @forelse($appointments as $appointment)
                             <tr class="hover:bg-slate-50/50 transition-colors">
-                                <td class="px-6 py-4 font-bold text-slate-900">
+                                <td class="px-6 py-4 font-bold text-slate-900 break-all">
                                     {{ $appointment->booking_reference ?? 'REF-NONE' }}
                                 </td>
 
@@ -120,8 +131,75 @@
                 </table>
             </div>
 
+            {{-- Mobile / Tablet Cards --}}
+            <div class="lg:hidden p-4 sm:p-5 space-y-4">
+                @forelse($appointments as $appointment)
+                    @php
+                        $statusClasses = match ($appointment->status) {
+                            'pending' => 'bg-amber-50 text-amber-700 border-amber-100',
+                            'confirmed' => 'bg-indigo-50 text-indigo-700 border-indigo-100',
+                            'completed' => 'bg-emerald-50 text-emerald-700 border-emerald-100',
+                            'cancelled' => 'bg-rose-50 text-rose-700 border-rose-100',
+                            default => 'bg-slate-50 text-slate-700 border-slate-100',
+                        };
+                    @endphp
+
+                    <div class="rounded-[1.25rem] border border-slate-200 bg-white p-4 shadow-sm">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="min-w-0">
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Reference</p>
+                                <p class="mt-1 text-sm font-bold text-slate-900 break-all">
+                                    {{ $appointment->booking_reference ?? 'REF-NONE' }}
+                                </p>
+                            </div>
+
+                            <span
+                                class="inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap {{ $statusClasses }}">
+                                {{ ucfirst($appointment->status) }}
+                            </span>
+                        </div>
+
+                        <div class="mt-4 space-y-3">
+                            <div class="rounded-xl bg-slate-50 px-3 py-3">
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Service</p>
+                                <p class="mt-1 text-sm font-semibold text-slate-800">
+                                    {{ $appointment->service->name ?? 'N/A' }}
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div class="rounded-xl bg-slate-50 px-3 py-3">
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Staff</p>
+                                    <p class="mt-1 text-sm font-semibold text-slate-700">
+                                        {{ $appointment->staff?->user?->name ?? 'Unassigned' }}
+                                    </p>
+                                </div>
+
+                                <div class="rounded-xl bg-slate-50 px-3 py-3">
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Date</p>
+                                    <p class="mt-1 text-sm font-semibold text-slate-700">
+                                        {{ \Carbon\Carbon::parse($appointment->appointment_date)->format('d M, Y') }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="rounded-xl bg-slate-50 px-3 py-3">
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Time</p>
+                                <p class="mt-1 text-sm font-semibold text-slate-700">
+                                    {{ \Carbon\Carbon::parse($appointment->appointment_time)->format('g:i A') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="px-4 py-10 text-center text-slate-500">
+                        No booking history found.
+                    </div>
+                @endforelse
+            </div>
+
             @if ($appointments->hasPages())
-                <div class="px-6 py-4 border-t border-slate-100 bg-slate-50/30">
+                <div class="px-4 sm:px-6 py-4 border-t border-slate-100 bg-slate-50/30">
                     {{ $appointments->links() }}
                 </div>
             @endif

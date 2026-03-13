@@ -59,13 +59,13 @@
                         class="px-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">Management</label>
 
                     <a href="{{ route('admin.appointments.index') }}"
-                        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all {{ request()->routeIs('admin.appointments.index') ? 'bg-white/10 text-white border-l-4 border-indigo-500 rounded-l-none' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+                        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all {{ request()->routeIs('admin.appointments.*') ? 'bg-white/10 text-white border-l-4 border-indigo-500 rounded-l-none' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
                         <i data-lucide="calendar-days" class="w-5 h-5"></i>
                         Appointments
                     </a>
 
                     <a href="{{ route('admin.appointments.calendar') }}"
-                        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all {{ request()->routeIs('admin.appointments.calendar') ? 'bg-white/10 text-white border-l-4 border-indigo-500 rounded-l-none' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+                        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all {{ request()->routeIs('admin.appointments.calendar.*') ? 'bg-white/10 text-white border-l-4 border-indigo-500 rounded-l-none' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
                         <i data-lucide="calendar-range" class="w-5 h-5"></i>
                         Calendar
                     </a>
@@ -156,13 +156,13 @@
                         class="px-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">Management</label>
 
                     <a href="{{ route('admin.appointments.index') }}"
-                        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all {{ request()->routeIs('admin.appointments.index') ? 'bg-white/10 text-white border-l-4 border-indigo-500 rounded-l-none' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+                        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all {{ request()->routeIs('admin.appointments.*') ? 'bg-white/10 text-white border-l-4 border-indigo-500 rounded-l-none' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
                         <i data-lucide="calendar-days" class="w-5 h-5"></i>
                         Appointments
                     </a>
 
                     <a href="{{ route('admin.appointments.calendar') }}"
-                        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all {{ request()->routeIs('admin.appointments.calendar') ? 'bg-white/10 text-white border-l-4 border-indigo-500 rounded-l-none' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+                        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all {{ request()->routeIs('admin.appointments.calendar.*') ? 'bg-white/10 text-white border-l-4 border-indigo-500 rounded-l-none' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
                         <i data-lucide="calendar-range" class="w-5 h-5"></i>
                         Calendar
                     </a>
@@ -231,9 +231,6 @@
                             <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight truncate">
                                 @yield('page_title', 'Admin Panel')
                             </h2>
-                            <p class="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5 truncate">
-                                @yield('page_description', 'Manage your booking system')
-                            </p>
                         </div>
                     </div>
 

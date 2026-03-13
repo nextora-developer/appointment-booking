@@ -47,8 +47,9 @@
                                 Name
                             </label>
 
-                            <input type="text" name="name" value="{{ old('name', $staff->user->name ?? '') }}"
-                                class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('name') border-rose-500 @enderror">
+                            <input type="text" name="name" placeholder="Enter staff name"
+                                value="{{ old('name', $staff->user->name ?? '') }}"
+                                class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('name') border-rose-500 @enderror">
 
                             @error('name')
                                 <p class="mt-2 text-[11px] font-bold text-rose-500 flex items-center gap-1">
@@ -63,8 +64,9 @@
                                 Email
                             </label>
 
-                            <input type="email" name="email" value="{{ old('email', $staff->user->email ?? '') }}"
-                                class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('email') border-rose-500 @enderror">
+                            <input type="email" name="email" placeholder="Enter email address"
+                                value="{{ old('email', $staff->user->email ?? '') }}"
+                                class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('email') border-rose-500 @enderror">
 
                             @error('email')
                                 <p class="mt-2 text-[11px] font-bold text-rose-500 flex items-center gap-1">
@@ -82,11 +84,10 @@
                         <div class="space-y-2">
                             <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">
                                 Password
-                                <span class="text-slate-400 normal-case">(Leave blank to keep current password)</span>
                             </label>
 
-                            <input type="password" name="password"
-                                class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('password') border-rose-500 @enderror">
+                            <input type="password" name="password" placeholder="Enter new password"
+                                class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('password') border-rose-500 @enderror">
 
                             @error('password')
                                 <p class="mt-2 text-[11px] font-bold text-rose-500 flex items-center gap-1">
@@ -101,8 +102,9 @@
                                 Phone
                             </label>
 
-                            <input type="text" name="phone" value="{{ old('phone', $staff->phone ?? '') }}"
-                                class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('phone') border-rose-500 @enderror">
+                            <input type="text" name="phone" placeholder="e.g. 0123456789"
+                                value="{{ old('phone', $staff->phone ?? '') }}"
+                                class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('phone') border-rose-500 @enderror">
 
                             @error('phone')
                                 <p class="mt-2 text-[11px] font-bold text-rose-500 flex items-center gap-1">
@@ -119,7 +121,7 @@
 
                             <div class="relative">
                                 <select name="is_active"
-                                    class="w-full appearance-none rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('is_active') border-rose-500 @enderror">
+                                    class="w-full appearance-none rounded-2xl border-slate-200 bg-white px-4 py-3 pr-10 text-sm font-bold text-slate-700 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('is_active') border-rose-500 @enderror">
 
                                     <option value="1" @selected(old('is_active', $staff->is_active ?? 1) == 1)>
                                         Active
@@ -130,6 +132,10 @@
                                     </option>
 
                                 </select>
+
+                                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-slate-400">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </div>
                             </div>
 
                             @error('is_active')
@@ -148,8 +154,8 @@
                             Bio
                         </label>
 
-                        <textarea name="bio" rows="4"
-                            class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('bio') border-rose-500 @enderror">{{ old('bio', $staff->bio ?? '') }}</textarea>
+                        <textarea name="bio" rows="4" placeholder="Write a short introduction about this staff member..."
+                            class="w-full rounded-2xl border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600 placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all @error('bio') border-rose-500 @enderror">{{ old('bio', $staff->bio ?? '') }}</textarea>
 
                         @error('bio')
                             <p class="mt-2 text-[11px] font-bold text-rose-500 flex items-center gap-1">

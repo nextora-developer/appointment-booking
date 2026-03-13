@@ -8,8 +8,8 @@
 
     <div class="max-w-3xl mx-auto">
 
-        <div class="mb-6">
-            <a href="{{ route('admin.customers.show', $customer) }}"
+        <div class="mb-1 sm:mb-2">
+            <a href="{{ route('admin.customers.index') }}"
                 class="inline-flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-indigo-600 transition-colors">
                 <i data-lucide="arrow-left" class="w-4 h-4"></i>
                 Back to Customer
