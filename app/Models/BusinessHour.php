@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class BusinessHour extends Model
 {
-    //
+    protected $fillable = [
+        'day',
+        'open_time',
+        'close_time',
+        'is_closed',
+    ];
 }

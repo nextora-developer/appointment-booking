@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\StaffController as AdminStaffController;
 use App\Http\Controllers\Admin\AppointmentController as AdminAppointmentController;
+use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
+use App\Http\Controllers\Admin\BusinessHourController;
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProfileController;
@@ -58,6 +60,14 @@ Route::middleware(['auth', 'admin'])
             'edit',
             'update'
         ]);
+
+        Route::get('/business-hours', [BusinessHourController::class, 'index'])->name('business-hours.index');
+        Route::post('/business-hours', [BusinessHourController::class, 'update'])->name('business-hours.update');
+
+        Route::get('/appointments-calendar', [AdminAppointmentController::class, 'calendar'])
+            ->name('appointments.calendar');
+
+        Route::resource('customers', AdminCustomerController::class) ->only(['index', 'show', 'edit', 'update']);
     });
 
 require __DIR__ . '/auth.php';

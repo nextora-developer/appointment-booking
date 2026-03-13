@@ -56,4 +56,26 @@ class AppointmentController extends Controller
             ->route('admin.appointments.index')
             ->with('success', 'Appointment updated successfully.');
     }
+
+    public function calendar(Request $request)
+    {
+        $start = now()->startOfWeek();
+        $end = now()->endOfWeek();
+
+        if ($request->week) {
+            $start = \Carbon\Carbon::parse($request->week)->startOfWeek();
+            $end = $start->copy()->endOfWeek();
+        }
+
+        $appointments = \App\Models\Appointment::with(['customer', 'service', 'staff.user'])
+            ->whereBetween('appointment_date', [$start->toDateString(), $end->toDateString()])
+            ->whereIn('status', ['pending', 'confirmed', 'completed'])
+            ->get();
+
+        return view('admin.appointments.calendar', compact(
+            'appointments',
+            'start',
+            'end'
+        ));
+    }
 }
