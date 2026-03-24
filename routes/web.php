@@ -57,6 +57,8 @@ Route::middleware(['auth', 'admin'])
         Route::resource('appointments', AdminAppointmentController::class)->only([
             'index',
             'show',
+            'create',
+            'store',
             'edit',
             'update'
         ]);
@@ -67,7 +69,7 @@ Route::middleware(['auth', 'admin'])
         Route::get('/appointments-calendar', [AdminAppointmentController::class, 'calendar'])
             ->name('appointments.calendar');
 
-        Route::resource('customers', AdminCustomerController::class) ->only(['index', 'show', 'edit', 'update']);
+        Route::resource('customers', AdminCustomerController::class)->only(['index', 'show', 'edit', 'update']);
     });
 
 require __DIR__ . '/auth.php';
