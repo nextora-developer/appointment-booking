@@ -62,7 +62,7 @@
                         </button>
 
                         <div x-show="profileOpen" @click.away="profileOpen = false" x-transition
-                            class="absolute right-0 mt-3 w-48 bg-white border border-slate-200 shadow-lg rounded-xl overflow-hidden">
+                            class="absolute right-0 mt-3 w-48 bg-white border border-slate-200 shadow-lg overflow-hidden">
 
                             <a href="{{ route('dashboard') }}" class="block px-4 py-3 text-sm hover:bg-slate-50">
                                 Dashboard
@@ -89,7 +89,7 @@
 
                 {{-- MOBILE HAMBURGER --}}
                 <button @click="mobileOpen = !mobileOpen"
-                    class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition">
+                    class="md:hidden inline-flex items-center justify-center w-11 h-11 border border-slate-200 text-slate-700 hover:bg-slate-50 transition">
                     <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -145,7 +145,7 @@
 
                     @foreach ($navItems as $item)
                         <a href="{{ route($item['route']) }}"
-                            class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-200 
+                            class="flex items-center gap-4 px-4 py-3.5 transition-all duration-200 
                    {{ request()->routeIs($item['route']) ? 'bg-[#8bc34a]/10 text-[#8bc34a]' : 'text-slate-600 active:bg-slate-50' }}">
                             <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -157,7 +157,7 @@
 
                     {{-- Special CTA for Booking --}}
                     <a href="{{ route('appointments.create') }}"
-                        class="flex items-center gap-4 px-4 py-4 mt-2 rounded-2xl bg-slate-900 text-white shadow-lg shadow-slate-200">
+                        class="flex items-center gap-4 px-4 py-4 mt-2 bg-slate-900 text-white shadow-lg shadow-slate-200">
                         <svg class="w-5 h-5 text-[#8bc34a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -170,17 +170,17 @@
                 <div class="mt-2 pt-2 border-t border-slate-100">
                     @guest
                         <a href="{{ route('login') }}"
-                            class="flex items-center justify-center w-full py-3.5 text-sm font-semibold text-white bg-[#8bc34a] rounded-xl shadow hover:opacity-90 transition">
+                            class="flex items-center justify-center w-full py-3.5 text-sm font-semibold text-white bg-[#8bc34a] shadow hover:opacity-90 transition">
                             Login
                         </a>
                     @endguest
 
                     @auth
                         {{-- User "Card" --}}
-                        <div class="bg-slate-50 rounded-3xl p-4">
+                        <div class="bg-slate-50 p-4">
                             <div class="flex items-center gap-3 mb-4 px-2">
                                 <div
-                                    class="w-10 h-10 rounded-full bg-[#8bc34a] flex items-center justify-center text-white font-bold">
+                                    class="w-10 h-10 bg-[#8bc34a] flex items-center justify-center text-white font-bold">
                                     {{ substr(auth()->user()->name, 0, 1) }}
                                 </div>
                                 <div>
@@ -191,17 +191,17 @@
 
                             <div class="grid grid-cols-2 gap-2">
                                 <a href="{{ route('dashboard') }}"
-                                    class="flex items-center justify-center py-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 hover:border-[#8bc34a]/30 hover:text-[#8bc34a] transition">
+                                    class="flex items-center justify-center py-3 bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:border-[#8bc34a]/30 hover:text-[#8bc34a] transition">
                                     Dashboard
                                 </a>
 
                                 <a href="{{ route('profile.edit') }}"
-                                    class="flex items-center justify-center py-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 hover:border-[#8bc34a]/30 hover:text-[#8bc34a] transition">
+                                    class="flex items-center justify-center py-3 bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:border-[#8bc34a]/30 hover:text-[#8bc34a] transition">
                                     My Profile
                                 </a>
 
                                 <a href="{{ route('appointments.index') }}"
-                                    class="col-span-2 flex items-center justify-center py-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 hover:border-[#8bc34a]/30 hover:text-[#8bc34a] transition">
+                                    class="col-span-2 flex items-center justify-center py-3 bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:border-[#8bc34a]/30 hover:text-[#8bc34a] transition">
                                     My Bookings
                                 </a>
                             </div>
@@ -209,7 +209,7 @@
                             <form method="POST" action="{{ route('logout') }}" class="mt-2">
                                 @csrf
                                 <button type="submit"
-                                    class="w-full py-3 text-xs font-bold text-red-500 hover:bg-red-50 rounded-xl transition">
+                                    class="w-full py-3 text-xs font-bold text-red-500 hover:bg-red-50 transition">
                                     Sign Out
                                 </button>
                             </form>

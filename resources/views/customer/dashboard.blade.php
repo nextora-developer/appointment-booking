@@ -7,7 +7,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {{-- HERO CARD --}}
-            <div class="rounded-[2rem] border border-slate-200 bg-white p-8 lg:p-10 shadow-sm">
+            <div class="border border-slate-200 bg-white p-8 lg:p-10 shadow-sm">
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
 
                     <div class="max-w-2xl">
@@ -26,12 +26,12 @@
 
                         <div class="mt-6 flex flex-wrap gap-3">
                             <a href="{{ route('appointments.create') }}"
-                                class="inline-flex items-center justify-center rounded-xl bg-[#8bc34a] px-6 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300 shadow-sm">
+                                class="inline-flex items-center justify-center bg-[#8bc34a] px-6 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300 shadow-sm">
                                 Book Appointment
                             </a>
 
                             <a href="{{ route('appointments.index') }}"
-                                class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition duration-300">
+                                class="inline-flex items-center justify-center border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition duration-300">
                                 My Appointments
                             </a>
                         </div>
@@ -40,8 +40,8 @@
                     {{-- DECORATIVE SIDE --}}
                     <div class="lg:w-[280px]">
                         <div
-                            class="rounded-[2rem] bg-[#8bc34a]/10 border border-[#8bc34a]/20 p-6 lg:p-7 h-full flex flex-col justify-center">
-                            <div class="w-14 h-14 rounded-2xl bg-[#8bc34a] text-white flex items-center justify-center shadow-sm">
+                            class="bg-[#8bc34a]/10 border border-[#8bc34a]/20 p-6 lg:p-7 h-full flex flex-col justify-center">
+                            <div class="w-14 h-14 bg-[#8bc34a] text-white flex items-center justify-center shadow-sm">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -66,12 +66,12 @@
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
 
                 <div
-                    class="rounded-[2rem] border border-slate-200 bg-white p-6 lg:p-7 shadow-sm hover:shadow-md transition duration-300">
+                    class="border border-slate-200 bg-white p-6 lg:p-7 shadow-sm hover:shadow-md transition duration-300">
                     <div class="flex items-center justify-between">
                         <div class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
                             Upcoming
                         </div>
-                        <div class="w-11 h-11 rounded-2xl bg-[#8bc34a]/10 text-[#8bc34a] flex items-center justify-center">
+                        <div class="w-11 h-11 bg-[#8bc34a]/10 text-[#8bc34a] flex items-center justify-center">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 stroke-width="1.8">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -88,12 +88,12 @@
                 </div>
 
                 <div
-                    class="rounded-[2rem] border border-slate-200 bg-white p-6 lg:p-7 shadow-sm hover:shadow-md transition duration-300">
+                    class="border border-slate-200 bg-white p-6 lg:p-7 shadow-sm hover:shadow-md transition duration-300">
                     <div class="flex items-center justify-between">
                         <div class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
                             Completed
                         </div>
-                        <div class="w-11 h-11 rounded-2xl bg-[#8bc34a]/10 text-[#8bc34a] flex items-center justify-center">
+                        <div class="w-11 h-11 bg-[#8bc34a]/10 text-[#8bc34a] flex items-center justify-center">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 stroke-width="1.8">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -110,12 +110,12 @@
                 </div>
 
                 <div
-                    class="rounded-[2rem] border border-slate-200 bg-white p-6 lg:p-7 shadow-sm hover:shadow-md transition duration-300">
+                    class="border border-slate-200 bg-white p-6 lg:p-7 shadow-sm hover:shadow-md transition duration-300">
                     <div class="flex items-center justify-between">
                         <div class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
                             Cancelled
                         </div>
-                        <div class="w-11 h-11 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center">
+                        <div class="w-11 h-11 bg-red-50 text-red-500 flex items-center justify-center">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 stroke-width="1.8">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -136,7 +136,7 @@
             {{-- QUICK LINKS / EXTRA SECTION --}}
             <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+                <div class="border border-slate-200 bg-white p-8 shadow-sm">
                     <div class="text-xs font-semibold uppercase tracking-[0.22em] text-[#8bc34a]">
                         Quick Access
                     </div>
@@ -152,19 +152,19 @@
 
                     <div class="mt-6 flex flex-wrap gap-3">
                         <a href="{{ route('appointments.index') }}"
-                            class="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition">
+                            class="inline-flex items-center border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition">
                             View Appointments
                         </a>
 
                         <a href="{{ route('profile.edit') }}"
-                            class="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition">
+                            class="inline-flex items-center border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition">
                             Edit Profile
                         </a>
                     </div>
                 </div>
 
                 <div
-                    class="rounded-[2rem] border border-[#8bc34a]/20 bg-gradient-to-br from-[#8bc34a]/10 to-white p-8 shadow-sm">
+                    class="border border-[#8bc34a]/20 bg-gradient-to-br from-[#8bc34a]/10 to-white p-8 shadow-sm">
                     <div class="text-xs font-semibold uppercase tracking-[0.22em] text-[#8bc34a]">
                         Next Visit
                     </div>
@@ -180,7 +180,7 @@
 
                     <div class="mt-6">
                         <a href="{{ route('appointments.create') }}"
-                            class="inline-flex items-center rounded-xl bg-[#8bc34a] px-6 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300 shadow-sm">
+                            class="inline-flex items-center bg-[#8bc34a] px-6 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300 shadow-sm">
                             Book Now
                         </a>
                     </div>

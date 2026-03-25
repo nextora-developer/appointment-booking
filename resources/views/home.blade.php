@@ -146,7 +146,7 @@
         </div>
     </section>
 
-    <section class="py-10 md:py-20 bg-white">
+    <section class="py-10 md:py-16 bg-white">
         <div class="max-w-7xl mx-auto px-6">
 
             {{-- TITLE --}}
@@ -158,83 +158,63 @@
                 <div class="w-12 h-[2px] bg-[#8bc34a] mx-auto mt-4"></div>
             </div>
 
-
             {{-- CARDS --}}
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                {{-- ITEM --}}
-                <div class="bg-[#f7f7f7] p-10 text-center group transition hover:shadow-lg">
+                @forelse($services->take(3) as $service)
+                    <a href="{{ route('appointments.create', ['service_id' => $service->id]) }}"
+                        class="group block bg-[#f7f7f7] p-8 text-center transition duration-300 hover:-translate-y-1 hover:shadow-xl border border-transparent hover:border-[#8bc34a]/20">
 
-                    {{-- ICON --}}
-                    <div class="text-[#8bc34a] mb-6 flex justify-center">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 4l-4 16M10 4l4 16" />
-                        </svg>
+                        {{-- ICON --}}
+                        <div class="mb-6 flex justify-center text-[#8bc34a]">
+                            <div
+                                class="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm transition group-hover:scale-105">
+                               <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m7.848 8.25 1.536.887M7.848 8.25a3 3 0 1 1-5.196-3 3 3 0 0 1 5.196 3Zm1.536.887a2.165 2.165 0 0 1 1.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l2.077 1.199M7.848 15.75l1.536-.887m-1.536.887a3 3 0 1 1-5.196 3 3 3 0 0 1 5.196-3Zm1.536-.887a2.165 2.165 0 0 0 1.083-1.838c.005-.352.054-.695.14-1.025m-1.223 2.863 2.077-1.199m0-3.328a4.323 4.323 0 0 1 2.068-1.379l5.325-1.628a4.5 4.5 0 0 1 2.48-.044l.803.215-7.794 4.5m-2.882-1.664A4.33 4.33 0 0 0 10.607 12m3.736 0 7.794 4.5-.802.215a4.5 4.5 0 0 1-2.48-.043l-5.326-1.629a4.324 4.324 0 0 1-2.068-1.379M14.343 12l-2.882 1.664" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        {{-- TITLE --}}
+                        <h3 class="text-xl font-serif text-slate-900 mb-3 transition group-hover:text-[#8bc34a]">
+                            {{ $service->name }}
+                        </h3>
+
+                        {{-- DESCRIPTION --}}
+                        <p class="text-slate-500 text-sm leading-relaxed min-h-[60px]">
+                            {{ $service->description ?: 'No description available.' }}
+                        </p>
+
+                        {{-- PRICE --}}
+                        <div class="mt-5 text-[#8bc34a] font-semibold">
+                            RM {{ number_format($service->price, 2) }}
+                        </div>
+
+                        {{-- CTA --}}
+                        <div class="mt-6 text-sm font-semibold text-slate-700 group-hover:text-[#8bc34a]">
+                            Book Now →
+                        </div>
+
+                    </a>
+                @empty
+                    <div class="col-span-full text-center text-slate-500">
+                        No services available.
                     </div>
+                @endforelse
 
-                    <h3 class="text-xl font-serif text-slate-900 mb-3">
-                        Barber Razor
-                    </h3>
+            </div>
 
-                    <p class="text-slate-500 text-sm leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-
-                    <div class="mt-6 text-[#8bc34a] font-semibold">
-                        $29
-                    </div>
-
-                </div>
-
-
-                {{-- ITEM --}}
-                <div class="bg-[#f7f7f7] p-10 text-center group transition hover:shadow-lg">
-
-                    <div class="text-[#8bc34a] mb-6 flex justify-center">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 21c4-4 8-6.5 8-10a8 8 0 10-16 0c0 3.5 4 6 8 10z" />
-                        </svg>
-                    </div>
-
-                    <h3 class="text-xl font-serif text-slate-900 mb-3">
-                        Location Pin
-                    </h3>
-
-                    <p class="text-slate-500 text-sm leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-
-                    <div class="mt-6 text-[#8bc34a] font-semibold">
-                        $46
-                    </div>
-
-                </div>
-
-
-                {{-- ITEM --}}
-                <div class="bg-[#f7f7f7] p-10 text-center group transition hover:shadow-lg">
-
-                    <div class="text-[#8bc34a] mb-6 flex justify-center">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3h6v2H9V3zm-3 4h12l-1 14H7L6 7z" />
-                        </svg>
-                    </div>
-
-                    <h3 class="text-xl font-serif text-slate-900 mb-3">
-                        Barber Shave
-                    </h3>
-
-                    <p class="text-slate-500 text-sm leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-
-                    <div class="mt-6 text-[#8bc34a] font-semibold">
-                        $24
-                    </div>
-
-                </div>
-
+            {{-- VIEW MORE --}}
+            <div class="mt-14 text-center">
+                <a href="{{ route('services.index') }}"
+                    class="inline-flex items-center justify-center border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition duration-300">
+                    View All Services
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                    </svg>
+                </a>
             </div>
 
         </div>

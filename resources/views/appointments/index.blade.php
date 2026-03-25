@@ -24,7 +24,7 @@
                 </div>
 
                 <a href="{{ route('appointments.create') }}"
-                    class="inline-flex items-center justify-center rounded-xl bg-[#8bc34a] px-6 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300 shadow-sm">
+                    class="inline-flex items-center justify-center bg-[#8bc34a] px-6 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300 shadow-sm">
                     Book New Appointment
                 </a>
 
@@ -32,7 +32,7 @@
 
             {{-- SUCCESS --}}
             @if (session('success'))
-                <div class="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                <div class="mt-6 border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                     {{ session('success') }}
                 </div>
             @endif
@@ -54,7 +54,7 @@
                     @endphp
 
                     <a href="{{ route('appointments.show', $appointment) }}"
-                        class="block rounded-[2rem] border border-slate-200 bg-white p-6 lg:p-7 shadow-sm hover:shadow-md hover:border-[#8bc34a]/30 transition duration-300">
+                        class="block border border-slate-200 bg-white p-6 lg:p-7 shadow-sm hover:shadow-md hover:border-[#8bc34a]/30 transition duration-300">
 
                         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
@@ -90,7 +90,7 @@
 
                                 {{-- STATUS --}}
                                 <span
-                                    class="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold {{ $statusClass }}">
+                                    class="inline-flex items-center px-4 py-1.5 text-xs font-semibold {{ $statusClass }}">
                                     {{ ucfirst($status) }}
                                 </span>
 
@@ -107,10 +107,10 @@
 
                 @empty
 
-                    <div class="rounded-[2rem] border border-slate-200 bg-white p-10 text-center shadow-sm">
+                    <div class="border border-slate-200 bg-white p-10 text-center shadow-sm">
 
                         <div
-                            class="w-16 h-16 mx-auto rounded-2xl bg-[#8bc34a]/10 text-[#8bc34a] flex items-center justify-center">
+                            class="w-16 h-16 mx-auto bg-[#8bc34a]/10 text-[#8bc34a] flex items-center justify-center">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 stroke-width="1.8">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -127,7 +127,7 @@
                         </p>
 
                         <a href="{{ route('appointments.create') }}"
-                            class="mt-6 inline-flex items-center rounded-xl bg-[#8bc34a] px-6 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300">
+                            class="mt-6 inline-flex items-center bg-[#8bc34a] px-6 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300">
                             Book Now
                         </a>
 

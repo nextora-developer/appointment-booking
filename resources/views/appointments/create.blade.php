@@ -103,7 +103,7 @@
     <section class="py-10 bg-white">
         <div class="max-w-3xl mx-auto px-6">
 
-            <div class="bg-white border border-slate-200 rounded-[2rem] p-10 shadow-sm">
+            <div class="bg-white border border-slate-200 p-10 shadow-sm">
 
                 {{-- TITLE --}}
                 <h1 class="text-4xl font-serif text-slate-900">
@@ -122,7 +122,7 @@
                         <label class="text-sm font-semibold text-slate-700">Service</label>
 
                         <select name="service_id"
-                            class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 
+                            class="mt-2 w-full border border-slate-200 px-4 py-3 
                                focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40">
 
                             <option value="">Select Service</option>
@@ -142,7 +142,7 @@
                         <label class="text-sm font-semibold text-slate-700">Staff</label>
 
                         <select name="staff_id"
-                            class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 
+                            class="mt-2 w-full border border-slate-200 px-4 py-3 
                                focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40">
 
                             <option value="">Any Available Staff</option>
@@ -163,14 +163,14 @@
 
                         <input type="date" name="appointment_date" value="{{ request('appointment_date') }}"
                             min="{{ now()->toDateString() }}"
-                            class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 
+                            class="mt-2 w-full border border-slate-200 px-4 py-3 
                                focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40">
                     </div>
 
 
                     {{-- BUTTON --}}
                     <button
-                        class="w-full py-3 rounded-xl bg-[#8bc34a] text-white font-semibold 
+                        class="w-full py-3 bg-[#8bc34a] text-white font-semibold 
                            hover:bg-[#7cb342] transition duration-300">
                         Check Available Slots
                     </button>
@@ -202,7 +202,7 @@
 
                                     @foreach ($availableSlots as $slot)
                                         <label
-                                            class="border border-slate-200 rounded-xl p-3 text-center cursor-pointer 
+                                            class="border border-slate-200 p-3 text-center cursor-pointer 
                                                     transition
                                                     hover:border-[#8bc34a]
                                                     has-[input:checked]:bg-[#8bc34a]
@@ -227,13 +227,13 @@
                                     <label class="text-sm font-semibold text-slate-700">Notes</label>
 
                                     <textarea name="notes" rows="4" placeholder="Any notes or special requests (optional)..."
-                                        class="mt-2 w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40"></textarea>
+                                        class="mt-2 w-full border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40"></textarea>
                                 </div>
 
 
                                 {{-- CONFIRM --}}
                                 <button
-                                    class="w-full py-3 rounded-xl bg-[#8bc34a] text-white font-semibold 
+                                    class="w-full py-3 bg-[#8bc34a] text-white font-semibold 
                                        hover:bg-[#7cb342] transition duration-300">
 
                                     Confirm Booking

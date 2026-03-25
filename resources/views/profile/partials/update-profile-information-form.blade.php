@@ -27,7 +27,7 @@
                 <div>
                     <label class="text-sm font-semibold text-slate-700">Name</label>
                     <input type="text" name="name" value="{{ old('name', $user->name) }}"
-                        class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3
+                        class="mt-2 w-full border border-slate-200 px-4 py-3
                            focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40 focus:border-[#8bc34a]">
 
                     @error('name')
@@ -39,7 +39,7 @@
                 <div>
                     <label class="text-sm font-semibold text-slate-700">Email</label>
                     <input type="email" name="email" value="{{ old('email', $user->email) }}"
-                        class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3
+                        class="mt-2 w-full border border-slate-200 px-4 py-3
                            focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40 focus:border-[#8bc34a]">
 
                     @error('email')
@@ -51,7 +51,7 @@
 
             {{-- VERIFY --}}
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
-                <div class="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-4">
+                <div class="border border-amber-200 bg-amber-50 px-4 py-4">
                     <p class="text-sm text-slate-700">
                         Your email address is unverified.
 
@@ -71,7 +71,7 @@
             {{-- SAVE --}}
             <div class="flex items-center gap-4 pt-2">
                 <button
-                    class="inline-flex items-center rounded-xl bg-[#8bc34a] px-5 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition">
+                    class="inline-flex items-center bg-[#8bc34a] px-5 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition">
                     Save Changes
                 </button>
             </div>
@@ -102,7 +102,7 @@
                 <div>
                     <label class="text-sm font-semibold text-slate-700">Current Password</label>
                     <input type="password" name="current_password" placeholder="Enter your current password"
-                        class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3
+                        class="mt-2 w-full border border-slate-200 px-4 py-3
                            focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40 focus:border-[#8bc34a]">
 
                     @error('current_password', 'updatePassword')
@@ -114,7 +114,7 @@
                 <div>
                     <label class="text-sm font-semibold text-slate-700">New Password</label>
                     <input type="password" name="password" placeholder="At least 8 characters"
-                        class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3
+                        class="mt-2 w-full border border-slate-200 px-4 py-3
                            focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40 focus:border-[#8bc34a]">
 
                     @error('password', 'updatePassword')
@@ -126,7 +126,7 @@
                 <div>
                     <label class="text-sm font-semibold text-slate-700">Confirm Password</label>
                     <input type="password" name="password_confirmation" placeholder="Re-enter new password"
-                        class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3
+                        class="mt-2 w-full border border-slate-200 px-4 py-3
                            focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40 focus:border-[#8bc34a]">
 
                     @error('password_confirmation', 'updatePassword')
@@ -139,7 +139,7 @@
             {{-- SAVE --}}
             <div class="flex items-center gap-4 pt-2">
                 <button
-                    class="inline-flex items-center rounded-xl bg-[#8bc34a] px-5 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition">
+                    class="inline-flex items-center bg-[#8bc34a] px-5 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition">
                     Update Password
                 </button>
 

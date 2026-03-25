@@ -27,7 +27,7 @@
             <div class="mt-10 space-y-6">
 
                 {{-- PROFILE INFO --}}
-                <div class="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <div class="border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
                     <div class="max-w-5xl">
                         @include('profile.partials.update-profile-information-form')
                     </div>

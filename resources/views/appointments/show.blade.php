@@ -18,7 +18,7 @@
                 };
             @endphp
 
-            <div class="rounded-[2rem] border border-slate-200 bg-white p-8 lg:p-10 shadow-sm">
+            <div class="border border-slate-200 bg-white p-8 lg:p-10 shadow-sm">
 
                 {{-- HEADER --}}
                 <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
@@ -37,7 +37,7 @@
                     </div>
 
                     <span
-                        class="inline-flex items-center self-start rounded-full px-4 py-2 text-sm font-semibold {{ $statusClass }}">
+                        class="inline-flex items-center self-start px-4 py-2 text-sm font-semibold {{ $statusClass }}">
                         {{ ucfirst($appointment->status) }}
                     </span>
                 </div>
@@ -45,7 +45,7 @@
                 {{-- INFO GRID --}}
                 <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                    <div class="rounded-[1.5rem] border border-slate-200 bg-[#f8faf7] p-5">
+                    <div class="border border-slate-200 bg-[#f8faf7] p-5">
                         <div class="text-xs uppercase tracking-[0.22em] font-semibold text-slate-400">
                             Service
                         </div>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
 
-                    <div class="rounded-[1.5rem] border border-slate-200 bg-[#f8faf7] p-5">
+                    <div class="border border-slate-200 bg-[#f8faf7] p-5">
                         <div class="text-xs uppercase tracking-[0.22em] font-semibold text-slate-400">
                             Staff
                         </div>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    <div class="rounded-[1.5rem] border border-slate-200 bg-[#f8faf7] p-5">
+                    <div class="border border-slate-200 bg-[#f8faf7] p-5">
                         <div class="text-xs uppercase tracking-[0.22em] font-semibold text-slate-400">
                             Date
                         </div>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
 
-                    <div class="rounded-[1.5rem] border border-slate-200 bg-[#f8faf7] p-5">
+                    <div class="border border-slate-200 bg-[#f8faf7] p-5">
                         <div class="text-xs uppercase tracking-[0.22em] font-semibold text-slate-400">
                             Time
                         </div>
@@ -84,7 +84,7 @@
                 </div>
 
                 {{-- NOTES --}}
-                <div class="mt-6 rounded-[1.5rem] border border-slate-200 bg-white p-6">
+                <div class="mt-6 border border-slate-200 bg-white p-6">
                     <div class="text-xs uppercase tracking-[0.22em] font-semibold text-[#8bc34a]">
                         Notes
                     </div>
@@ -97,12 +97,12 @@
                 {{-- ACTION --}}
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="{{ route('appointments.index') }}"
-                        class="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition duration-300">
+                        class="inline-flex items-center border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition duration-300">
                         Back to My Appointments
                     </a>
 
                     <a href="{{ route('appointments.create') }}"
-                        class="inline-flex items-center rounded-xl bg-[#8bc34a] px-5 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300 shadow-sm">
+                        class="inline-flex items-center bg-[#8bc34a] px-5 py-3 text-sm font-semibold text-white hover:bg-[#7cb342] transition duration-300 shadow-sm">
                         Book Another Appointment
                     </a>
                 </div>

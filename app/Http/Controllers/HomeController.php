@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staff;
+use App\Models\Service;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,10 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        return view('home', compact('staffMembers'));
+        $services = Service::where('is_active', true)
+            ->take(3)
+            ->get();
+
+        return view('home', compact('staffMembers', 'services'));
     }
 }
