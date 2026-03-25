@@ -3,7 +3,7 @@
 @section('title', 'Home - Appointment Booking System')
 
 @section('content')
-    <section x-data="{ slide: 1 }" class="relative h-screen overflow-hidden -mt-16 pt-16">
+    <section x-data="{ slide: 1 }" class="relative min-h-[100svh] overflow-hidden">
 
         {{-- SLIDE 1 --}}
         <div x-show="slide === 1" class="absolute inset-0 bg-cover bg-center bg-fixed transition-all duration-700"
@@ -57,8 +57,7 @@
 
                     <div class="mt-8">
                         <a href="{{ route('services.index') }}"
-                            class="px-8 py-3 bg-black text-white font-semibold tracking-wide 
-               hover:bg-white hover:text-black transition">
+                            class="px-8 py-3 bg-black text-white font-semibold tracking-wide hover:bg-white hover:text-black transition">
                             Book Now!
                         </a>
                     </div>
@@ -278,19 +277,15 @@
         </div>
     </section>
 
-    <section class="relative py-52 bg-center bg-cover bg-fixed text-center text-white"
+    <section class="relative py-28 md:py-40 bg-center bg-cover md:bg-fixed text-center text-white"
         style="background-image: url('{{ asset('images/hero_bg_2.jpg') }}')">
 
-        {{-- 可选：轻微 overlay（让文字更清楚） --}}
         <div class="absolute inset-0 bg-black/30"></div>
 
         <div class="relative max-w-7xl mx-auto px-6">
-
-            <h2 class="text-4xl md:text-7xl font-serif leading-tight">
-                Experience Our Outstanding <br> Services
+            <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
+                Experience Our Outstanding <br class="hidden sm:block"> Services
             </h2>
-
         </div>
-
     </section>
 @endsection
