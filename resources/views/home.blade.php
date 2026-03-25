@@ -6,7 +6,7 @@
     <section x-data="{ slide: 1 }" class="relative min-h-[100svh] overflow-hidden">
 
         {{-- SLIDE 1 --}}
-        <div x-show="slide === 1" class="absolute inset-0 bg-cover bg-center bg-fixed transition-all duration-700"
+        <div x-show="slide === 1" class="absolute inset-0 bg-cover bg-center md:bg-fixed transition-all duration-700"
             style="background-image: url('{{ asset('images/hero_bg_1.jpg') }}')">
 
             <div class="relative h-full flex items-center justify-center text-center px-4">
@@ -45,7 +45,7 @@
 
 
         {{-- SLIDE 2 --}}
-        <div x-show="slide === 2" class="absolute inset-0 bg-cover bg-center bg-fixed transition-all duration-700"
+        <div x-show="slide === 2" class="absolute inset-0 bg-cover bg-center md:bg-fixed transition-all duration-700"
             style="background-image: url('{{ asset('images/hero_bg_2.jpg') }}')">
 
             <div class="relative h-full flex items-center justify-center text-center px-4">

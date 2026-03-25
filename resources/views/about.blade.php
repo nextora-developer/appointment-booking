@@ -3,7 +3,7 @@
 @section('title', 'About Us')
 
 @section('content')
-    <section class="relative h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-center text-center"
+    <section class="relative h-[60vh] bg-cover bg-center md:bg-fixed flex items-center justify-center text-center"
         style="background-image: url('{{ asset('images/hero_bg_1.jpg') }}')">
 
         {{-- 不要暗的话就不要 overlay --}}
