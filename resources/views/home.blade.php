@@ -247,9 +247,9 @@
 
                 {{-- IMAGE --}}
                 <div class="w-full md:w-2/3 flex justify-center">
-                    <img src="{{ asset('images/person_1.jpg') }}" class="w-[665px] h-[665px] object-cover">
+                    <img src="{{ asset('images/person_1.jpg') }}"
+                        class="w-full max-w-[665px] h-[260px] md:h-[665px] object-cover">
                 </div>
-
 
                 {{-- FLOATING CARD --}}
                 <div class="bg-white p-10 shadow-lg md:absolute md:right-0 md:w-[50%] md:-mr-20 mt-10 md:mt-0">
