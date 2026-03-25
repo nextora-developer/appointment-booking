@@ -81,7 +81,7 @@
 
     </section>
 
-    <section class="relative bg-white py-20 z-10">
+    <section class="relative bg-white py-10 md:py-20 z-10">
         <div class="max-w-7xl mx-auto px-6">
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
@@ -146,7 +146,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-white">
+    <section class="py-10 md:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6">
 
             {{-- TITLE --}}
@@ -240,7 +240,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-[#f7f7f7]">
+    <section class="py-10 md:py-20 bg-[#f7f7f7]">
         <div class="max-w-6xl mx-auto px-6">
 
             <div class="relative flex flex-col md:flex-row items-center">
