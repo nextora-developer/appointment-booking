@@ -4,23 +4,126 @@
 
 @section('content')
 
-    <section class="py-16">
-        <div class="max-w-3xl mx-auto px-4">
+    <section class="relative h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-center text-center"
+        style="background-image: url('{{ asset('images/hero_bg_1.jpg') }}')">
 
-            <div class="bg-white border rounded-3xl p-8 shadow-sm">
+        {{-- 不要暗的话就不要 overlay --}}
+        {{-- <div class="absolute inset-0 bg-black/30"></div> --}}
 
-                <h1 class="text-3xl font-black mb-2">Book Appointment</h1>
-                <p class="text-slate-500 mb-8">
+        <div class="relative text-white px-4">
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-light drop-shadow-lg">
+                Book Now
+            </h1>
+
+        </div>
+
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+
+            {{-- TITLE --}}
+            <h2 class="text-3xl md:text-4xl font-serif text-slate-900">
+                Booking Process
+            </h2>
+
+            <div class="w-12 h-[2px] bg-[#8bc34a] mx-auto mt-4 mb-12"></div>
+
+            {{-- STEPS --}}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                {{-- STEP 1 --}}
+                <div class="group">
+                    <div class="flex justify-center mb-6">
+                        <div
+                            class="w-16 h-16 flex items-center justify-center rounded-full 
+                                border-2 border-[#8bc34a] text-[#8bc34a] text-xl font-bold
+                                group-hover:bg-[#8bc34a] group-hover:text-white transition">
+                            1
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-serif text-slate-900 mb-3">
+                        Choose Service
+                    </h3>
+
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Select your preferred service, staff and appointment date.
+                    </p>
+                </div>
+
+
+                {{-- STEP 2 --}}
+                <div class="group">
+                    <div class="flex justify-center mb-6">
+                        <div
+                            class="w-16 h-16 flex items-center justify-center rounded-full 
+                                border-2 border-[#8bc34a] text-[#8bc34a] text-xl font-bold
+                                group-hover:bg-[#8bc34a] group-hover:text-white transition">
+                            2
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-serif text-slate-900 mb-3">
+                        Pick Time Slot
+                    </h3>
+
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        View available time slots and choose the one that suits you best.
+                    </p>
+                </div>
+
+
+                {{-- STEP 3 --}}
+                <div class="group">
+                    <div class="flex justify-center mb-6">
+                        <div
+                            class="w-16 h-16 flex items-center justify-center rounded-full 
+                                border-2 border-[#8bc34a] text-[#8bc34a] text-xl font-bold
+                                group-hover:bg-[#8bc34a] group-hover:text-white transition">
+                            3
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-serif text-slate-900 mb-3">
+                        Confirm Booking
+                    </h3>
+
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Submit your booking and we’ll reserve your appointment instantly.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+
+            <div class="bg-white border border-slate-200 rounded-[2rem] p-10 shadow-sm">
+
+                {{-- TITLE --}}
+                <h1 class="text-4xl font-serif text-slate-900">
+                    Book Appointment
+                </h1>
+
+                <p class="text-slate-500 mt-3 mb-10">
                     Choose your service, preferred staff and date to see available time slots.
                 </p>
 
-                {{-- STEP 1: SELECT SERVICE / STAFF / DATE --}}
-                <form method="GET" action="{{ route('appointments.create') }}" class="space-y-6">
+                {{-- STEP 1 --}}
+                <form method="GET" action="{{ route('appointments.create') }}#slots-section" class="space-y-6">
 
+                    {{-- SERVICE --}}
                     <div>
-                        <label class="font-semibold">Service</label>
+                        <label class="text-sm font-semibold text-slate-700">Service</label>
 
-                        <select name="service_id" class="mt-2 w-full rounded-xl border-slate-300">
+                        <select name="service_id"
+                            class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 
+                               focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40">
 
                             <option value="">Select Service</option>
 
@@ -34,10 +137,13 @@
                     </div>
 
 
+                    {{-- STAFF --}}
                     <div>
-                        <label class="font-semibold">Staff</label>
+                        <label class="text-sm font-semibold text-slate-700">Staff</label>
 
-                        <select name="staff_id" class="mt-2 w-full rounded-xl border-slate-300">
+                        <select name="staff_id"
+                            class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 
+                               focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40">
 
                             <option value="">Any Available Staff</option>
 
@@ -51,36 +157,39 @@
                     </div>
 
 
+                    {{-- DATE --}}
                     <div>
-                        <label class="font-semibold">Date</label>
+                        <label class="text-sm font-semibold text-slate-700">Date</label>
 
                         <input type="date" name="appointment_date" value="{{ request('appointment_date') }}"
-                            min="{{ now()->toDateString() }}" class="mt-2 w-full rounded-xl border-slate-300">
+                            min="{{ now()->toDateString() }}"
+                            class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 
+                               focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40">
                     </div>
 
 
-                    <button class="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold">
+                    {{-- BUTTON --}}
+                    <button
+                        class="w-full py-3 rounded-xl bg-[#8bc34a] text-white font-semibold 
+                           hover:bg-[#7cb342] transition duration-300">
                         Check Available Slots
                     </button>
 
                 </form>
 
 
-                {{-- STEP 2: SHOW AVAILABLE SLOTS --}}
-
+                {{-- STEP 2 --}}
                 @if (request('appointment_date'))
 
-                    <div class="mt-10 border-t pt-8">
+                    <div id="slots-section" class="mt-12 border-t border-slate-100 pt-10">
 
-                        <h2 class="text-xl font-bold mb-4">
+                        <h2 class="text-2xl font-serif text-slate-900 mb-6">
                             Available Time Slots
                         </h2>
-
 
                         @if (count($availableSlots))
 
                             <form method="POST" action="{{ route('appointments.store') }}" class="space-y-6">
-
                                 @csrf
 
                                 <input type="hidden" name="service_id" value="{{ request('service_id') }}">
@@ -88,16 +197,21 @@
                                 <input type="hidden" name="appointment_date" value="{{ request('appointment_date') }}">
 
 
-                                <div class="grid grid-cols-3 gap-3">
+                                {{-- SLOTS --}}
+                                <div class="grid grid-cols-3 gap-4">
 
                                     @foreach ($availableSlots as $slot)
-                                        <label class="border rounded-xl p-3 text-center cursor-pointer hover:bg-slate-50">
+                                        <label
+                                            class="border border-slate-200 rounded-xl p-3 text-center cursor-pointer 
+                                               hover:border-[#8bc34a] transition">
 
                                             <input type="radio" name="appointment_time" value="{{ $slot }}"
                                                 class="hidden peer">
 
                                             <span
-                                                class="font-semibold peer-checked:text-white peer-checked:bg-slate-900 rounded-lg px-2 py-1 block">
+                                                class="block font-semibold text-slate-700 
+                                                   peer-checked:bg-[#8bc34a] peer-checked:text-white 
+                                                   rounded-lg py-2 transition">
 
                                                 {{ \Carbon\Carbon::createFromFormat('H:i', $slot)->format('g:i A') }}
 
@@ -109,14 +223,20 @@
                                 </div>
 
 
+                                {{-- NOTES --}}
                                 <div>
-                                    <label class="font-semibold">Notes</label>
+                                    <label class="text-sm font-semibold text-slate-700">Notes</label>
 
-                                    <textarea name="notes" rows="4" class="mt-2 w-full border rounded-xl"></textarea>
+                                    <textarea name="notes" rows="4"
+                                        class="mt-2 w-full border border-slate-200 rounded-xl px-4 py-3 
+                                           focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40"></textarea>
                                 </div>
 
 
-                                <button class="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold">
+                                {{-- CONFIRM --}}
+                                <button
+                                    class="w-full py-3 rounded-xl bg-[#8bc34a] text-white font-semibold 
+                                       hover:bg-[#7cb342] transition duration-300">
 
                                     Confirm Booking
 
@@ -127,7 +247,6 @@
                             <p class="text-red-500">
                                 No available slots for this date.
                             </p>
-
                         @endif
 
                     </div>

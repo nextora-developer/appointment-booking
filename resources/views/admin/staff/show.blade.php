@@ -32,13 +32,22 @@
                         <div class="relative">
                             <div
                                 class="h-32 w-32 rounded-[2rem] bg-gradient-to-br from-indigo-500 to-purple-600 p-1 shadow-lg shadow-indigo-100">
+
                                 <div
                                     class="h-full w-full rounded-[1.8rem] bg-white flex items-center justify-center overflow-hidden">
-                                    <span class="text-4xl font-black text-indigo-500">
-                                        {{ strtoupper(substr($staff->user->name ?? '?', 0, 1)) }}
-                                    </span>
+
+                                    @if ($staff->image)
+                                        <img src="{{ asset('storage/' . $staff->image) }}" alt="{{ $staff->user->name }}"
+                                            class="w-full h-full object-cover">
+                                    @else
+                                        <span class="text-4xl font-black text-indigo-500">
+                                            {{ strtoupper(substr($staff->user->name ?? '?', 0, 1)) }}
+                                        </span>
+                                    @endif
+
                                 </div>
                             </div>
+
                             @if ($staff->is_active)
                                 <span
                                     class="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 border-4 border-white text-white shadow-sm"

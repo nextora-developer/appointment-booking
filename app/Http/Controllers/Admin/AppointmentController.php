@@ -193,7 +193,7 @@ class AppointmentController extends Controller
 
         $appointments = \App\Models\Appointment::with(['customer', 'service', 'staff.user'])
             ->whereBetween('appointment_date', [$start->toDateString(), $end->toDateString()])
-            ->whereIn('status', ['pending', 'confirmed', 'completed'])
+            ->whereIn('status', ['confirmed', 'completed'])
             ->get();
 
         return view('admin.appointments.calendar', compact(

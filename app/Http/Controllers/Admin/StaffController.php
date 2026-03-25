@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class StaffController extends Controller
 {
@@ -32,10 +33,11 @@ class StaffController extends Controller
             'password' => ['required', 'string', 'min:8'],
             'phone' => ['nullable', 'string', 'max:50'],
             'bio' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'is_active' => ['required', 'boolean'],
         ]);
 
-        DB::transaction(function () use ($validated) {
+        DB::transaction(function () use ($validated, $request) {
             $user = User::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
@@ -43,10 +45,17 @@ class StaffController extends Controller
                 'role' => 'staff',
             ]);
 
+            $imagePath = null;
+
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('staff', 'public');
+            }
+
             Staff::create([
                 'user_id' => $user->id,
                 'phone' => $validated['phone'] ?? null,
                 'bio' => $validated['bio'] ?? null,
+                'image' => $imagePath,
                 'is_active' => $validated['is_active'],
             ]);
         });
@@ -85,24 +94,36 @@ class StaffController extends Controller
             'password' => ['nullable', 'string', 'min:8'],
             'phone' => ['nullable', 'string', 'max:50'],
             'bio' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'is_active' => ['required', 'boolean'],
         ]);
 
-        DB::transaction(function () use ($validated, $staff) {
+        DB::transaction(function () use ($validated, $staff, $request) {
             $staff->user->update([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
             ]);
 
-            if (! empty($validated['password'])) {
+            if (!empty($validated['password'])) {
                 $staff->user->update([
                     'password' => Hash::make($validated['password']),
                 ]);
             }
 
+            $imagePath = $staff->image;
+
+            if ($request->hasFile('image')) {
+                if ($staff->image && Storage::disk('public')->exists($staff->image)) {
+                    Storage::disk('public')->delete($staff->image);
+                }
+
+                $imagePath = $request->file('image')->store('staff', 'public');
+            }
+
             $staff->update([
                 'phone' => $validated['phone'] ?? null,
                 'bio' => $validated['bio'] ?? null,
+                'image' => $imagePath,
                 'is_active' => $validated['is_active'],
             ]);
         });
@@ -116,6 +137,11 @@ class StaffController extends Controller
     {
         DB::transaction(function () use ($staff) {
             $user = $staff->user;
+
+            if ($staff->image && Storage::disk('public')->exists($staff->image)) {
+                Storage::disk('public')->delete($staff->image);
+            }
+
             $staff->delete();
 
             if ($user) {

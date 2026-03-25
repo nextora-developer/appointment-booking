@@ -12,6 +12,7 @@ class Staff extends Model
         'user_id',
         'phone',
         'bio',
+        'image',
         'is_active',
     ];
 

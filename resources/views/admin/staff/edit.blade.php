@@ -16,7 +16,7 @@
             </a>
         </div>
 
-        <form method="POST" action="{{ route('admin.staff.update', $staff) }}"
+        <form method="POST" action="{{ route('admin.staff.update', $staff) }}" enctype="multipart/form-data"
             class="bg-white border border-slate-200 rounded-[2rem] shadow-sm overflow-hidden">
 
             @csrf
@@ -133,7 +133,8 @@
 
                                 </select>
 
-                                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-slate-400">
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-slate-400">
                                     <i data-lucide="chevron-down" class="w-4 h-4"></i>
                                 </div>
                             </div>
@@ -148,7 +149,34 @@
 
                     </div>
 
-                    {{-- ROW 3: BIO --}}
+                    {{-- ROW 3: IMAGE --}}
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">
+                            Staff Image
+                        </label>
+
+                        <input type="file" name="image" accept="image/*"
+                            class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-600
+               file:mr-4 file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-bold file:text-indigo-600
+               hover:file:bg-indigo-100 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all
+               @error('image') border-rose-500 @enderror">
+
+                        @error('image')
+                            <p class="mt-2 text-[11px] font-bold text-rose-500 flex items-center gap-1">
+                                <i data-lucide="alert-circle" class="w-3 h-3"></i>
+                                {{ $message }}
+                            </p>
+                        @enderror
+
+                        @if ($staff->image)
+                            <div class="pt-2">
+                                <img src="{{ asset('storage/' . $staff->image) }}" alt="{{ $staff->user->name }}"
+                                    class="w-24 h-24 rounded-2xl object-cover border border-slate-200 shadow-sm">
+                            </div>
+                        @endif
+                    </div>
+
+                    {{-- ROW 4: BIO --}}
                     <div class="space-y-2">
                         <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">
                             Bio
