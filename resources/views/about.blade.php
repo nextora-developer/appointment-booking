@@ -27,7 +27,7 @@
                 {{-- LEFT: IMAGE --}}
                 <div class="overflow-hidden">
                     <img src="{{ asset('images/img_5.jpg') }}"
-                        class="w-full h-[500px] object-cover transition duration-500 hover:scale-105">
+                        class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover transition duration-500 hover:scale-105">
                 </div>
 
                 {{-- RIGHT: TEXT --}}

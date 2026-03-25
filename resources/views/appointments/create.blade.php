@@ -100,7 +100,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-white">
+    <section class="py-10 bg-white">
         <div class="max-w-3xl mx-auto px-6">
 
             <div class="bg-white border border-slate-200 rounded-[2rem] p-10 shadow-sm">
@@ -203,18 +203,17 @@
                                     @foreach ($availableSlots as $slot)
                                         <label
                                             class="border border-slate-200 rounded-xl p-3 text-center cursor-pointer 
-                                               hover:border-[#8bc34a] transition">
+                                                    transition
+                                                    hover:border-[#8bc34a]
+                                                    has-[input:checked]:bg-[#8bc34a]
+                                                    has-[input:checked]:border-[#8bc34a]
+                                                    has-[input:checked]:text-white">
 
                                             <input type="radio" name="appointment_time" value="{{ $slot }}"
-                                                class="hidden peer">
+                                                class="hidden">
 
-                                            <span
-                                                class="block font-semibold text-slate-700 
-                                                   peer-checked:bg-[#8bc34a] peer-checked:text-white 
-                                                   rounded-lg py-2 transition">
-
-                                                {{ \Carbon\Carbon::createFromFormat('H:i', $slot)->format('g:i A') }}
-
+                                            <span class="block font-semibold py-2">
+                                                {{ \Carbon\Carbon::parse($slot)->format('g:i A') }}
                                             </span>
 
                                         </label>
@@ -227,9 +226,8 @@
                                 <div>
                                     <label class="text-sm font-semibold text-slate-700">Notes</label>
 
-                                    <textarea name="notes" rows="4"
-                                        class="mt-2 w-full border border-slate-200 rounded-xl px-4 py-3 
-                                           focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40"></textarea>
+                                    <textarea name="notes" rows="4" placeholder="Any notes or special requests (optional)..."
+                                        class="mt-2 w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8bc34a]/40"></textarea>
                                 </div>
 
 

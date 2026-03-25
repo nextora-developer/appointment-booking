@@ -19,7 +19,7 @@
 
                     {{-- BIG TITLE --}}
                     <h1 class="text-5xl sm:text-6xl lg:text-7xl font-serif font-light leading-tight drop-shadow-lg">
-                        Hair Salon Expert
+                        Hair Salon <br class="sm:hidden"> Expert
                     </h1>
 
                     {{-- BUTTON --}}
